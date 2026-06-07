@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈依琳 | 商务数据分析学习平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --code: #1e293b;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6efff 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* 头部样式 */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .header .name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* 课程卡片网格 */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 课程卡片 */
+        .course-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeUp 0.6s ease backwards;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15);
+            border-color: var(--primary);
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .course-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .course-card p {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card .tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 内容区域 */
+        .content-section {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        /* 章节列表 */
+        .chapter-list {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .chapter-item {
+            padding: 1rem 1.2rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .chapter-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 代码块 */
+        .code-block {
+            background: var(--code);
+            color: #fff;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            line-height: 1.5;
+        }
+
+        /* 练习题 */
+        .exercise {
+            background: #f0f9ff;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 动画 */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部信息 -->
+        <div class="header">
+            <h1>商务数据分析学习平台</h1>
+            <p class="subtitle">广东科学技术职业学院 | 商学院</p>
+            <p class="name">商务数据分析与应用专业 · 陈依琳</p>
+        </div>
+
+        <!-- 课程卡片 -->
+        <div class="course-grid" id="courseGrid">
+            <div class="course-card" data-course="python">
+                <h3>🐍 Python基础</h3>
+                <p>编程入门、语法基础、数据结构、函数模块</p>
+                <span class="tag">10章 · 代码实战</span>
+            </div>
+
+            <div class="course-card" data-course="analysis">
+                <h3>📊 数据分析技术</h3>
+                <p>数据清洗、可视化、统计分析、建模基础</p>
+                <span class="tag">10章 · 分析实战</span>
+            </div>
+
+            <div class="course-card" data-course="collect">
+                <h3>🌐 数据采集与处理</h3>
+                <p>爬虫基础、API获取、数据清洗、存储管理</p>
+                <span class="tag">10章 · 采集实战</span>
+            </div>
+
+            <div class="course-card" data-course="supply">
+                <h3>📦 供应链数据分析</h3>
+                <p>库存优化、需求预测、流程分析、效率提升</p>
+                <span class="tag">10章 · 行业实战</span>
+            </div>
+
+            <div class="course-card" data-course="db">
+                <h3>🗄️ 数据库原理与应用</h3>
+                <p>SQL语法、数据库设计、事务管理、数据查询</p>
+                <span class="tag">10章 · SQL实战</span>
+            </div>
+        </div>
+
+        <!-- ==================== Python基础内容 ==================== -->
+        <div class="content-section" id="python">
+            <button class="back-btn" onclick="goBack()">← 返回首页</button>
+            <h2 class="section-title">Python基础 - 10章完整课程</h2>
+            <div class="chapter-list">
+                <div class="chapter-item"><h4>第1章：Python环境搭建与基础语法</h4></div>
+                <div class="chapter-item"><h4>第2章：变量、数据类型与运算符</h4></div>
+                <div class="chapter-item"><h4>第3章：流程控制（if/for/while）</h4></div>
+                <div class="chapter-item"><h4>第4章：列表、元组、字典、集合</h4></div>
+                <div class="chapter-item"><h4>第5章：函数定义与参数使用</h4></div>
+                <div class="chapter-item"><h4>第6章：模块导入与文件操作</h4></div>
+                <div class="chapter-item"><h4>第7章：异常处理机制</h4></div>
+                <div class="chapter-item"><h4>第8章：面向对象基础</h4></div>
+                <div class="chapter-item"><h4>第9章：常用标准库</h4></div>
+                <div class="chapter-item"><h4>第10章：综合项目实战</h4></div>
+            </div>
+
+            <h3>🎯 示例代码</h3>
+            <div class="code-block">
+# Python基础示例：数据分析入门
+import pandas as pd
+import numpy as np
+
+# 创建数据
+data = {"姓名": ["陈依琳","同学1","同学2"],
+        "成绩": [95,88,92],
+        "专业": ["商务数据分析"]*3}
+
+df = pd.DataFrame(data)
+print("学生成绩表：")
+print(df)
+print("\n平均分：", df["成绩"].mean())
+            </div>
+
+            <h3>📝 章节练习题</h3>
+            <div class="exercise">
+                <strong>第3章练习题：</strong><br>
+                1. 编写程序判断输入数字是奇数还是偶数<br>
+                2. 使用for循环输出1-100所有能被7整除的数<br>
+                3. 实现一个简单的成绩等级判断系统（90+A，80+B，以此类推）
+            </div>
+        </div>
+
+        <!-- ==================== 数据分析技术 ==================== -->
+        <div class="content-section" id="analysis">
+            <button class="back-btn" onclick="goBack()">← 返回首页</button>
+            <h2 class="section-title">数据分析技术 - 10章完整课程</h2>
+            <div class="chapter-list">
+                <div class="chapter-item"><h4>第1章：数据分析概述与流程</h4></div>
+                <div class="chapter-item"><h4>第2章：数据清洗与预处理</h4></div>
+                <div class="chapter-item"><h4>第3章：描述性统计分析</h4></div>
+                <div class="chapter-item"><h4>第4章：数据可视化基础</h4></div>
+                <div class="chapter-item"><h4>第5章：多维分析与钻取</h4></div>
+                <div class="chapter-item"><h4>第6章：Pandas高级操作</h4></div>
+                <div class="chapter-item"><h4>第7章：Matplotlib绘图实战</h4></div>
+                <div class="chapter-item"><h4>第8章：业务指标体系搭建</h4></div>
+                <div class="chapter-item"><h4>第9章：数据分析报告撰写</h4></div>
+                <div class="chapter-item"><h4>第10章：商业数据分析实战</h4></div>
+            </div>
+
+            <h3>🎯 示例代码</h3>
+            <div class="code-block">
+# 数据分析示例：销售数据统计
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 读取数据（模拟）
+sales = pd.DataFrame({
+    "月份": [1,2,3,4,5],
+    "销售额": [12000,15000,18000,16500,21000]
+})
+
+# 计算月增长率
+sales["增长率"] = sales["销售额"].pct_change() * 100
+print(sales)
+            </div>
+
+            <h3>📝 章节练习题</h3>
+            <div class="exercise">
+                <strong>第4章练习题：</strong><br>
+                1. 对一份销售数据完成缺失值、异常值清洗<br>
+                2. 使用柱状图展示各产品销量对比<br>
+                3. 计算月度销售额同比、环比增长率
+            </div>
+        </div>
+
+        <!-- ==================== 数据采集与处理 ==================== -->
+        <div class="content-section" id="collect">
+            <button class="back-btn" onclick="goBack()">← 返回首页</button>
+            <h2 class="section-title">数据采集与处理 - 10章完整课程</h2>
+            <div class="chapter-list">
+                <div class="chapter-item"><h4>第1章：数据来源与采集方法</h4></div>
+                <div class="chapter-item"><h4>第2章：网络爬虫基础</h4></div>
+                <div class="chapter-item"><h4>第3章：Requests库使用</h4></div>
+                <div class="chapter-item"><h4>第4章：HTML解析与数据提取</h4></div>
+                <div class="chapter-item"><h4>第5章：API数据获取</h4></div>
+                <div class="chapter-item"><h4>第6章：数据清洗规则</h4></div>
+                <div class="chapter-item"><h4>第7章：重复值与异常值处理</h4></div>
+                <div class="chapter-item"><h4>第8章：数据标准化与归一化</h4></div>
+                <div class="chapter-item"><h4>第9章：数据存储方案</h4></div>
+                <div class="chapter-item"><h4>第10章：采集项目综合实战</h4></div>
+            </div>
+
+            <h3>🎯 示例代码</h3>
+            <div class="code-block">
+# 数据采集示例
+import requests
+from bs4 import BeautifulSoup
+
+# 请求网页
+url = "https://www.example.com"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+
+# 提取标题
+title = soup.find("title").text
+print("网页标题：", title)
+            </div>
+
+            <h3>📝 章节练习题</h3>
+            <div class="exercise">
+                <strong>第6章练习题：</strong><br>
+                1. 爬取一个公开页面的表格数据并保存<br>
+                2. 对采集的数据进行去重、缺失值填充<br>
+                3. 将清洗后数据导出为Excel文件
+            </div>
+        </div>
+
+        <!-- ==================== 供应链数据分析 ==================== -->
+        <div class="content-section" id="supply">
+            <button class="back-btn" onclick="goBack()">← 返回首页</button>
+            <h2 class="section-title">供应链数据分析 - 10章完整课程</h2>
+            <div class="chapter-list">
+                <div class="chapter-item"><h4>第1章：供应链管理基础</h4></div>
+                <div class="chapter-item"><h4>第2章：供应链数据指标</h4></div>
+                <div class="chapter-item"><h4>第3章：库存数据分析</h4></div>
+                <div class="chapter-item"><h4>第4章：需求预测方法</h4></div>
+                <div class="chapter-item"><h4>第5章：采购数据分析</h4></div>
+                <div class="chapter-item"><h4>第6章：物流效率分析</h4></div>
+                <div class="chapter-item"><h4>第7章：成本结构分析</h4></div>
+                <div class="chapter-item"><h4>第8章：供应链风险监控</h4></div>
+                <div class="chapter-item"><h4>第9章：供应链优化模型</h4></div>
+                <div class="chapter-item"><h4>第10章：行业案例实战</h4></div>
+            </div>
+
+            <h3>🎯 示例代码</h3>
+            <div class="code-block">
+# 供应链库存分析
+import pandas as pd
+
+# 库存数据
+inventory = pd.DataFrame({
+    "产品": ["A","B","C","D"],
+    "库存": [150,80,200,120],
+    "月销量": [60,75,90,40]
+})
+
+# 计算可售天数
+inventory["可售天数"] = inventory["库存"] / inventory["月销量"] * 30
+print(inventory)
+            </div>
+
+            <h3>📝 章节练习题</h3>
+            <div class="exercise">
+                <strong>第4章练习题：</strong><br>
+                1. 分析历史销量数据并做月度需求预测<br>
+                2. 计算库存周转率并判断库存健康度<br>
+                3. 输出一份供应链数据简报
+            </div>
+        </div>
+
+        <!-- ==================== 数据库原理与应用 ==================== -->
+        <div class="content-section" id="db">
+            <button class="back-btn" onclick="goBack()">← 返回首页</button>
+            <h2 class="section-title">数据库原理与应用 - 10章完整课程</h2>
+            <div class="chapter-list">
+                <div class="chapter-item"><h4>第1章：数据库系统概述</h4></div>
+                <div class="chapter-item"><h4>第2章：数据模型与关系代数</h4></div>
+                <div class="chapter-item"><h4>第3章：SQL基础语法</h4></div>
+                <div class="chapter-item"><h4>第4章：数据表创建与管理</h4></div>
+                <div class="chapter-item"><h4>第5章：数据查询（SELECT）</h4></div>
+                <div class="chapter-item"><h4>第6章：多表查询与连接</h4></div>
+                <div class="chapter-item"><h4>第7章：索引与视图</h4></div>
+                <div class="chapter-item"><h4>第8章：事务与锁</h4></div>
+                <div class="chapter-item"><h4>第9章：数据库设计</h4></div>
+                <div class="chapter-item"><h4>第10章：数据库综合实战</h4></div>
+            </div>
+
+            <h3>🎯 示例代码</h3>
+            <div class="code-block">
+-- SQL查询示例：学生成绩查询
+SELECT
+    学生姓名,
+    课程名称,
+    成绩,
+    CASE WHEN 成绩 >= 60 THEN '及格' ELSE '不及格' END AS 状态
+FROM 成绩表
+WHERE 专业 = '商务数据分析与应用'
+ORDER BY 成绩 DESC;
+            </div>
+
+            <h3>📝 章节练习题</h3>
+            <div class="exercise">
+                <strong>第5章练习题：</strong><br>
+                1. 创建学生信息表并插入5条数据<br>
+                2. 使用多条件查询筛选出80分以上学生<br>
+                3. 使用分组统计各班级平均分
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 卡片点击事件
+        const cards = document.querySelectorAll('.course-card');
+        const sections = document.querySelectorAll('.content-section');
+        const grid = document.getElementById('courseGrid');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const courseId = card.dataset.course;
+                grid.style.display = 'none';
+                document.getElementById(courseId).classList.add('active');
+            });
+        });
+
+        // 返回首页
+        function goBack() {
+            sections.forEach(sec => sec.classList.remove('active'));
+            grid.style.display = 'grid';
+        }
+    </script>
+</body>
+</html>
