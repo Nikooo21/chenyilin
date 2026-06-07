@@ -35,7 +35,6 @@
             padding: 2rem 1rem;
         }
 
-        /* 头部样式 */
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -52,7 +51,6 @@
         .header .subtitle {
             font-size: 1.1rem;
             color: var(--secondary);
-            margin-bottom: 0.3rem;
         }
 
         .header .name {
@@ -61,7 +59,6 @@
             color: var(--primary);
         }
 
-        /* 课程卡片网格 */
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -69,7 +66,6 @@
             margin-bottom: 2rem;
         }
 
-        /* 课程卡片 */
         .course-card {
             background: var(--card);
             border-radius: 16px;
@@ -78,7 +74,6 @@
             border: 1px solid var(--border);
             transition: all 0.3s ease;
             cursor: pointer;
-            animation: fadeUp 0.6s ease backwards;
         }
 
         .course-card:hover {
@@ -87,19 +82,10 @@
             border-color: var(--primary);
         }
 
-        .course-card:nth-child(1) { animation-delay: 0.1s; }
-        .course-card:nth-child(2) { animation-delay: 0.2s; }
-        .course-card:nth-child(3) { animation-delay: 0.3s; }
-        .course-card:nth-child(4) { animation-delay: 0.4s; }
-        .course-card:nth-child(5) { animation-delay: 0.5s; }
-
         .course-card h3 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
             color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .course-card p {
@@ -115,10 +101,8 @@
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 500;
         }
 
-        /* 内容区域 */
         .content-section {
             background: var(--card);
             border-radius: 16px;
@@ -136,12 +120,10 @@
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
             border-left: 4px solid var(--primary);
             padding-left: 1rem;
         }
 
-        /* 章节列表 */
         .chapter-list {
             display: grid;
             gap: 1rem;
@@ -154,7 +136,7 @@
             border-radius: 10px;
             border-left: 3px solid var(--primary);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
         .chapter-item:hover {
@@ -162,65 +144,54 @@
             transform: translateX(4px);
         }
 
-        .chapter-item h4 {
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
-        }
-
-        /* 章节详情页 */
         .chapter-detail {
             display: none;
         }
 
         .chapter-detail.active {
             display: block;
-            animation: fadeIn 0.4s ease;
         }
 
-        /* 代码块 */
         .code-block {
             background: var(--code);
             color: #fff;
             padding: 1.2rem;
             border-radius: 10px;
             margin: 1rem 0;
-            overflow-x: auto;
             font-family: 'Consolas', monospace;
-            line-height: 1.5;
         }
 
-        /* 在线编辑器 */
         .editor-container {
             margin: 1rem 0;
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border);
         }
+
         .editor-header {
             background: var(--primary);
             color: white;
             padding: 0.6rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        #code-editor {
+
+        textarea {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background: #1e293b;
             color: #fff;
             padding: 1rem;
             border: none;
             font-family: 'Consolas', monospace;
-            font-size: 14px;
             resize: vertical;
         }
+
         .editor-footer {
             background: #f1f5f9;
             padding: 0.6rem 1rem;
             display: flex;
             gap: 0.5rem;
         }
+
         .run-btn {
             background: #10b981;
             color: white;
@@ -228,11 +199,8 @@
             padding: 0.4rem 1rem;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 500;
         }
-        .run-btn:hover {
-            background: #059669;
-        }
+
         .clear-btn {
             background: #ef4444;
             color: white;
@@ -240,21 +208,16 @@
             padding: 0.4rem 1rem;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 500;
         }
-        .clear-btn:hover {
-            background: #dc2626;
-        }
+
         #output-area {
             background: #0f172a;
             color: #10b981;
             padding: 1rem;
             min-height: 80px;
             font-family: 'Consolas', monospace;
-            border-top: 1px solid var(--border);
         }
 
-        /* 练习题 */
         .exercise {
             background: #f0f9ff;
             padding: 1.2rem;
@@ -264,7 +227,6 @@
         }
 
         .back-btn {
-            display: inline-block;
             margin-bottom: 1.5rem;
             padding: 0.6rem 1.2rem;
             background: var(--primary);
@@ -272,15 +234,8 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 500;
-            transition: 0.2s;
         }
 
-        .back-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        /* 动画 */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -298,764 +253,243 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 头部信息 -->
-        <div class="header">
-            <h1>商务数据分析学习平台</h1>
-            <p class="subtitle">广东科学技术职业学院 | 商学院</p>
-            <p class="name">商务数据分析与应用专业 · 陈依琳</p>
-        </div>
 
-        <!-- 课程卡片 -->
-        <div class="course-grid" id="courseGrid">
-            <div class="course-card" data-course="python">
-                <h3>🐍 Python基础</h3>
-                <p>编程入门、语法基础、数据结构、函数模块</p>
-                <span class="tag">10章 · 代码实战</span>
-            </div>
-
-            <div class="course-card" data-course="analysis">
-                <h3>📊 数据分析技术</h3>
-                <p>数据清洗、可视化、统计分析、建模基础</p>
-                <span class="tag">10章 · 分析实战</span>
-            </div>
-
-            <div class="course-card" data-course="collect">
-                <h3>🌐 数据采集与处理</h3>
-                <p>爬虫基础、API获取、数据清洗、存储管理</p>
-                <span class="tag">10章 · 采集实战</span>
-            </div>
-
-            <div class="course-card" data-course="supply">
-                <h3>📦 供应链数据分析</h3>
-                <p>库存优化、需求预测、流程分析、效率提升</p>
-                <span class="tag">10章 · 行业实战</span>
-            </div>
-
-            <div class="course-card" data-course="db">
-                <h3>🗄️ 数据库原理与应用</h3>
-                <p>SQL语法、数据库设计、事务管理、数据查询</p>
-                <span class="tag">10章 · SQL实战</span>
-            </div>
-        </div>
-
-        <!-- ==================== Python基础内容 ==================== -->
-        <div class="content-section" id="python">
-            <button class="back-btn" onclick="goBack()">← 返回首页</button>
-            <h2 class="section-title">Python基础 - 10章完整课程</h2>
-            
-            <!-- 章节列表 -->
-            <div class="chapter-list" id="python-chapters">
-                <div class="chapter-item" data-chapter="py-1">
-                    <h4>第1章：Python环境搭建与基础语法</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-2">
-                    <h4>第2章：变量、数据类型与运算符</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-3">
-                    <h4>第3章：流程控制（if/for/while）</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-4">
-                    <h4>第4章：列表、元组、字典、集合</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-5">
-                    <h4>第5章：函数定义与参数使用</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-6">
-                    <h4>第6章：模块导入与文件操作</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-7">
-                    <h4>第7章：异常处理机制</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-8">
-                    <h4>第8章：面向对象基础</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-9">
-                    <h4>第9章：常用标准库</h4>
-                </div>
-                <div class="chapter-item" data-chapter="py-10">
-                    <h4>第10章：综合项目实战</h4>
-                </div>
-            </div>
-
-            <!-- 第1章详情 -->
-            <div class="chapter-detail" id="py-1">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第1章：Python环境搭建与基础语法</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 你的第一个Python程序
-print("Hello, 陈依琳的数据分析学习平台!")
-
-# 简单的数学运算
-a = 10
-b = 20
-print("a + b =", a + b)
-print("a * b =", a * b)
-                </div>
-
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor" placeholder="在这里写你的Python代码...">
-# 在这里尝试你的代码
-print("Hello, 陈依琳!")
-a = 123
-b = 456
-print(a + b)
-print(a - b)
-print(a * b)
-print(a / b)
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode()">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput()">清空输出</button>
-                    </div>
-                    <div id="output-area">// 运行结果会显示在这里</div>
-                </div>
-
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 安装Python并配置开发环境（推荐VS Code）<br>
-                    2. 编写程序输出你的名字和专业信息<br>
-                    3. 计算123和456的加减乘除运算并打印结果
-                </div>
-            </div>
-
-            <!-- 第2章详情 -->
-            <div class="chapter-detail" id="py-2">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第2章：变量、数据类型与运算符</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 变量与数据类型示例
-name = "陈依琳"          # 字符串
-age = 20                # 整数
-height = 1.65           # 浮点数
-is_student = True       # 布尔值
-
-print(f"姓名: {name}, 年龄: {age}, 身高: {height}")
-print("数据类型:", type(name), type(age), type(height))
-                </div>
-
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py2" placeholder="在这里写你的Python代码...">
-# 定义变量存储你的信息
-name = "陈依琳"
-major = "商务数据分析与应用"
-print(f"我是{name}，专业是{major}")
-
-# 温度转换：摄氏度转华氏度
-c = 25
-f = c * 9/5 + 32
-print(f"{c}°C = {f}°F")
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py2')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py2')">清空输出</button>
-                    </div>
-                    <div id="output-area-py2">// 运行结果会显示在这里</div>
-                </div>
-
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 定义变量存储你的姓名、年龄、专业信息并打印<br>
-                    2. 计算圆的面积（π取3.14，半径自定义）<br>
-                    3. 实现温度转换：摄氏度转华氏度（公式：F = C × 9/5 + 32）
-                </div>
-            </div>
-
-            <!-- 第3章详情 -->
-            <div class="chapter-detail" id="py-3">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第3章：流程控制（if/for/while）</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# if条件判断
-score = 85
-if score >= 90:
-    grade = "A"
-elif score >= 80:
-    grade = "B"
-else:
-    grade = "C"
-print(f"成绩等级: {grade}")
-
-# for循环
-for i in range(1, 6):
-    print(f"第{i}次循环")
-                </div>
-
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py3" placeholder="在这里写你的Python代码...">
-# 判断奇偶
-num = 17
-if num % 2 == 0:
-    print(f"{num} 是偶数")
-else:
-    print(f"{num} 是奇数")
-
-# 输出1-100能被7整除的数
-for i in range(1, 101):
-    if i % 7 == 0:
-        print(i, end=" ")
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py3')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py3')">清空输出</button>
-                    </div>
-                    <div id="output-area-py3">// 运行结果会显示在这里</div>
-                </div>
-
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 编写程序判断输入数字是奇数还是偶数<br>
-                    2. 使用for循环输出1-100所有能被7整除的数<br>
-                    3. 实现一个简单的成绩等级判断系统（90+A，80+B，以此类推）
-                </div>
-            </div>
-
-            <!-- 其他章节可以按同样格式补充 -->
-            <div class="chapter-detail" id="py-4">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第4章：列表、元组、字典、集合</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 列表操作
-scores = [85, 92, 78, 90, 88]
-scores.append(95)
-print("平均分:", sum(scores)/len(scores))
-
-# 字典操作
-student = {"name": "陈依琳", "major": "商务数据分析", "score": 95}
-print("专业:", student["major"])
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py4" placeholder="在这里写你的Python代码...">
-# 列表和字典练习
-students = [
-    {"name": "陈依琳", "score": 95},
-    {"name": "同学A", "score": 88},
-    {"name": "同学B", "score": 92}
-]
-
-# 计算平均分
-total = 0
-for s in students:
-    total += s["score"]
-print("平均分:", total / len(students))
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py4')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py4')">清空输出</button>
-                    </div>
-                    <div id="output-area-py4">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 创建一个包含5个元素的列表，实现增删改查操作<br>
-                    2. 使用字典存储3个同学的成绩信息，并计算平均分<br>
-                    3. 找出两个列表中的共同元素（使用集合）
-                </div>
-            </div>
-
-            <!-- 剩下的章节我先给你搭好框架，你可以按需要复制上面的结构补充 -->
-            <div class="chapter-detail" id="py-5">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第5章：函数定义与参数使用</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 定义函数计算平均分
-def calc_average(scores):
-    return sum(scores) / len(scores)
-
-scores = [85, 92, 78, 90]
-avg = calc_average(scores)
-print(f"平均分: {avg:.2f}")
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py5" placeholder="在这里写你的Python代码...">
-# 编写函数判断质数
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0:
-            return False
-    return True
-
-print(is_prime(17))
-print(is_prime(20))
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py5')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py5')">清空输出</button>
-                    </div>
-                    <div id="output-area-py5">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 编写函数判断一个数是否为质数<br>
-                    2. 编写函数实现列表的最大值、最小值、平均值计算<br>
-                    3. 实现带默认参数的函数，计算不同税率下的税额
-                </div>
-            </div>
-
-            <div class="chapter-detail" id="py-6">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第6章：模块导入与文件操作</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-import math
-import random
-
-# 使用math模块
-print("圆周率:", math.pi)
-print("平方根:", math.sqrt(16))
-
-# 文件写入
-with open("scores.txt", "w") as f:
-    f.write("陈依琳,95\n同学A,88\n同学B,92")
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py6" placeholder="在这里写你的Python代码...">
-import math
-import random
-
-# 生成随机数并计算
-nums = [random.randint(1,100) for _ in range(5)]
-print("随机数:", nums)
-print("最大值:", max(nums))
-print("平均值:", sum(nums)/len(nums))
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py6')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py6')">清空输出</button>
-                    </div>
-                    <div id="output-area-py6">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 读取一个文本文件，统计单词出现次数<br>
-                    2. 使用csv模块读写学生成绩表格<br>
-                    3. 生成10个随机数并写入文件，再读取计算平均值
-                </div>
-            </div>
-
-            <div class="chapter-detail" id="py-7">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第7章：异常处理机制</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-try:
-    num = int(input("请输入一个数字: "))
-    result = 100 / num
-    print(f"100 / {num} = {result}")
-except ValueError:
-    print("请输入有效的数字！")
-except ZeroDivisionError:
-    print("除数不能为零！")
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py7" placeholder="在这里写你的Python代码...">
-try:
-    a = int("abc")  # 故意制造错误
-    print(a)
-except ValueError as e:
-    print("发生错误:", e)
-finally:
-    print("程序结束")
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py7')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py7')">清空输出</button>
-                    </div>
-                    <div id="output-area-py7">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 编写程序处理文件不存在的异常<br>
-                    2. 实现带异常处理的成绩录入系统<br>
-                    3. 使用try-except-else-finally完成完整异常处理流程
-                </div>
-            </div>
-
-            <div class="chapter-detail" id="py-8">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第8章：面向对象基础</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-class Student:
-    def __init__(self, name, major):
-        self.name = name
-        self.major = major
-    
-    def introduce(self):
-        print(f"我是{self.name}，专业是{self.major}")
-
-student = Student("陈依琳", "商务数据分析")
-student.introduce()
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py8" placeholder="在这里写你的Python代码...">
-class Course:
-    def __init__(self, name, credit):
-        self.name = name
-        self.credit = credit
-    
-    def info(self):
-        print(f"课程: {self.name}, 学分: {self.credit}")
-
-python = Course("Python基础", 4)
-python.info()
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py8')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py8')">清空输出</button>
-                    </div>
-                    <div id="output-area-py8">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 创建一个课程类，包含课程名、学分、成绩属性<br>
-                    2. 实现学生类的继承，创建研究生子类<br>
-                    3. 编写一个简单的图书管理系统类
-                </div>
-            </div>
-
-            <div class="chapter-detail" id="py-9">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第9章：常用标准库</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-import datetime
-import json
-
-# 日期处理
-today = datetime.date.today()
-print("今天:", today)
-
-# JSON处理
-data = {"name": "陈依琳", "scores": [95, 88, 92]}
-json_str = json.dumps(data)
-print("JSON字符串:", json_str)
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py9" placeholder="在这里写你的Python代码...">
-import datetime
-import json
-
-# 计算距离期末还有多少天
-end_date = datetime.date(2025, 7, 1)
-today = datetime.date.today()
-days = (end_date - today).days
-print(f"距离期末还有 {days} 天")
-
-# JSON数据解析
-json_str = '{"name": "陈依琳", "scores": [95, 88, 92]}'
-data = json.loads(json_str)
-print("姓名:", data["name"])
-print("最高分:", max(data["scores"]))
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py9')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py9')">清空输出</button>
-                    </div>
-                    <div id="output-area-py9">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 使用datetime模块计算两个日期之间的天数<br>
-                    2. 使用json模块读写配置文件<br>
-                    3. 使用os模块遍历目录下的所有文件
-                </div>
-            </div>
-
-            <div class="chapter-detail" id="py-10">
-                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
-                <h3>第10章：综合项目实战</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 学生成绩管理系统（简化版）
-students = []
-
-def add_student(name, score):
-    students.append({"name": name, "score": score})
-
-def show_stats():
-    if not students:
-        print("暂无数据")
-        return
-    scores = [s["score"] for s in students]
-    print(f"平均分: {sum(scores)/len(scores):.2f}")
-    print(f"最高分: {max(scores)}, 最低分: {min(scores)}")
-
-add_student("陈依琳", 95)
-add_student("同学A", 88)
-show_stats()
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-py10" placeholder="在这里写你的Python代码...">
-# 简单的成绩管理系统
-students = []
-
-def add_student(name, score):
-    students.append({"name": name, "score": score})
-
-def show_all():
-    for s in students:
-        print(f"{s['name']}: {s['score']}分")
-
-add_student("陈依琳", 95)
-add_student("同学A", 88)
-add_student("同学B", 92)
-show_all()
-                </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-py10')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-py10')">清空输出</button>
-                    </div>
-                    <div id="output-area-py10">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 完成一个完整的学生成绩管理系统（增删改查+统计）<br>
-                    2. 实现数据的持久化存储（读写文件）<br>
-                    3. 添加简单的用户交互菜单
-                </div>
-            </div>
-        </div>
-
-        <!-- 其他课程的框架我先给你保留着 -->
-        <div class="content-section" id="analysis">
-            <button class="back-btn" onclick="goBack()">← 返回首页</button>
-            <h2 class="section-title">数据分析技术 - 10章完整课程</h2>
-            <div class="chapter-list" id="analysis-chapters">
-                <div class="chapter-item" data-chapter="an-1">
-                    <h4>第1章：数据分析概述与流程</h4>
-                </div>
-            </div>
-            <div class="chapter-detail" id="an-1">
-                <button class="back-btn" onclick="backToChapters('analysis')">← 返回章节列表</button>
-                <h3>第1章：数据分析概述与流程</h3>
-                <h4>🎯 示例代码</h4>
-                <div class="code-block">
-# 数据分析流程示例
-import pandas as pd
-
-# 1. 数据获取
-df = pd.DataFrame({
-    "月份": [1,2,3,4,5],
-    "销售额": [12000,15000,18000,16500,21000]
-})
-
-# 2. 数据查看
-print(df.head())
-print(df.describe())
-                </div>
-                <h4>💻 在线练习</h4>
-                <div class="editor-container">
-                    <div class="editor-header">
-                        <span>Python 编辑器</span>
-                    </div>
-                    <textarea id="code-editor-an1" placeholder="在这里写你的Python代码...">
-import pandas as pd
-
-# 创建销售数据
-df = pd.DataFrame({
-    "月份": [1,2,3,4,5],
-    "销售额": [12000,15000,18000,16500,21000]
-})
-
-print("数据概览:")
-print(df)
-print("\n统计信息:")
-print(df.describe())
-                    </textarea>
-                    <div class="editor-footer">
-                        <button class="run-btn" onclick="runCode('code-editor-an1')">▶ 运行</button>
-                        <button class="clear-btn" onclick="clearOutput('output-area-an1')">清空输出</button>
-                    </div>
-                    <div id="output-area-an1">// 运行结果会显示在这里</div>
-                </div>
-                <h4>📝 练习题</h4>
-                <div class="exercise">
-                    <strong>练习题：</strong><br>
-                    1. 整理数据分析的完整流程步骤<br>
-                    2. 用pandas读取一个csv文件并查看基本信息<br>
-                    3. 描述你理解的数据分析在商务中的应用场景
-                </div>
-            </div>
-        </div>
-
-        <div class="content-section" id="collect">
-            <button class="back-btn" onclick="goBack()">← 返回首页</button>
-            <h2 class="section-title">数据采集与处理 - 10章完整课程</h2>
-            <div class="chapter-list">
-                <div class="chapter-item"><h4>第1章：数据来源与采集方法</h4></div>
-            </div>
-        </div>
-
-        <div class="content-section" id="supply">
-            <button class="back-btn" onclick="goBack()">← 返回首页</button>
-            <h2 class="section-title">供应链数据分析 - 10章完整课程</h2>
-            <div class="chapter-list">
-                <div class="chapter-item"><h4>第1章：供应链管理基础</h4></div>
-            </div>
-        </div>
-
-        <div class="content-section" id="db">
-            <button class="back-btn" onclick="goBack()">← 返回首页</button>
-            <h2 class="section-title">数据库原理与应用 - 10章完整课程</h2>
-            <div class="chapter-list">
-                <div class="chapter-item"><h4>第1章：数据库系统概述</h4></div>
-            </div>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>商务数据分析学习平台</h1>
+        <p class="subtitle">广东科学技术职业学院 | 商学院</p>
+        <p class="name">商务数据分析与应用专业 · 陈依琳</p>
     </div>
 
-    <script>
-        // 卡片点击事件
-        const cards = document.querySelectorAll('.course-card');
-        const sections = document.querySelectorAll('.content-section');
-        const grid = document.getElementById('courseGrid');
+    <div class="course-grid" id="courseGrid">
+        <div class="course-card" data-course="python"><h3>🐍 Python基础</h3><p>语法、变量、函数、结构</p><span class="tag">10章 · 可练习</span></div>
+        <div class="course-card" data-course="analysis"><h3>📊 数据分析技术</h3><p>清洗、可视化、统计、建模</p><span class="tag">10章 · 可练习</span></div>
+        <div class="course-card" data-course="collect"><h3>🌐 数据采集与处理</h3><p>爬虫、API、清洗、入库</p><span class="tag">10章 · 可练习</span></div>
+        <div class="course-card" data-course="supply"><h3>📦 供应链数据分析</h3><p>库存、预测、效率、成本</p><span class="tag">10章 · 可练习</span></div>
+        <div class="course-card" data-course="db"><h3>🗄️ 数据库原理与应用</h3><p>SQL、表设计、查询、事务</p><span class="tag">10章 · 可练习</span></div>
+    </div>
 
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const courseId = card.dataset.course;
-                grid.style.display = 'none';
-                document.getElementById(courseId).classList.add('active');
-            });
-        });
+    <!-- ====================== Python基础 10章 ====================== -->
+    <div class="content-section" id="python">
+        <button class="back-btn" onclick="goBack()">← 返回首页</button>
+        <h2 class="section-title">Python基础 - 10章</h2>
+        <div class="chapter-list">
+            <div class="chapter-item" data-chapter="py1">第1章：基础语法</div>
+            <div class="chapter-item" data-chapter="py2">第2章：变量与类型</div>
+            <div class="chapter-item" data-chapter="py3">第3章：条件判断</div>
+            <div class="chapter-item" data-chapter="py4">第4章：循环语句</div>
+            <div class="chapter-item" data-chapter="py5">第5章：列表与字典</div>
+            <div class="chapter-item" data-chapter="py6">第6章：函数</div>
+            <div class="chapter-item" data-chapter="py7">第7章：文件操作</div>
+            <div class="chapter-item" data-chapter="py8">第8章：异常处理</div>
+            <div class="chapter-item" data-chapter="py9">第9章：模块与库</div>
+            <div class="chapter-item" data-chapter="py10">第10章：综合实战</div>
+        </div>
 
-        // 章节点击事件
-        document.querySelectorAll('.chapter-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const chapterId = item.dataset.chapter;
-                if (chapterId) {
-                    // 隐藏当前课程的章节列表
-                    item.parentElement.style.display = 'none';
-                    // 显示章节详情
-                    document.getElementById(chapterId).classList.add('active');
-                }
-            });
-        });
+        <div class="chapter-detail" id="py1"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第1章：基础语法</h3>
+            <div class="code-block">print("Hello 陈依琳")</div>
+            <div class="editor-container"><div class="editor-header">Python 编辑器</div>
+            <textarea id="ed-py1">print("Hello 商务数据分析")</textarea>
+            <div class="editor-footer"><button class="run-btn" onclick="run('ed-py1','out-py1')">运行</button><button class="clear-btn" onclick="cls('out-py1')">清空</button></div>
+            <div id="out-py1">// 结果</div></div>
+            <div class="exercise">练习：输出你的名字</div>
+        </div>
 
-        // 返回课程章节列表
-        function backToChapters(courseId) {
-            // 隐藏所有章节详情
-            document.querySelectorAll('.chapter-detail').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            // 显示章节列表
-            document.querySelectorAll(`#${courseId} .chapter-list`).forEach(list => {
-                list.style.display = 'grid';
-            });
-        }
+        <div class="chapter-detail" id="py2"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第2章：变量与类型</h3>
+            <div class="code-block">name = "陈依琳" print(name)</div>
+            <div class="editor-container"><div class="editor-header">Python 编辑器</div>
+            <textarea id="ed-py2">name = "陈依琳"\nage = 20\nprint(name, age)</textarea>
+            <div class="editor-footer"><button class="run-btn" onclick="run('ed-py2','out-py2')">运行</button><button class="clear-btn" onclick="cls('out-py2')">清空</button></div>
+            <div id="out-py2">// 结果</div></div>
+            <div class="exercise">练习：定义变量存姓名、专业</div>
+        </div>
 
-        // 返回首页
-        function goBack() {
-            sections.forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.chapter-detail').forEach(detail => {
-                detail.classList.remove('active');
-            });
-            document.querySelectorAll('.chapter-list').forEach(list => {
-                list.style.display = 'grid';
-            });
-            grid.style.display = 'grid';
-        }
+        <div class="chapter-detail" id="py3"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第3章：条件判断</h3>
+            <div class="code-block">score = 90 if score>60: print("及格")</div>
+            <div class="editor-container"><textarea id="ed-py3">score = 85\nif score >= 60: print("及格")</textarea><div class="editor-footer"><button onclick="run('ed-py3','out-py3')">运行</button><button onclick="cls('out-py3')">清空</button></div><div id="out-py3"></div></div></div>
+        <div class="chapter-detail" id="py4"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第4章：循环</h3><div class="editor-container"><textarea id="ed-py4">for i in range(10): print(i)</textarea><div class="editor-footer"><button onclick="run('ed-py4','out-py4')">运行</button><button onclick="cls('out-py4')">清空</button></div><div id="out-py4"></div></div></div>
+        <div class="chapter-detail" id="py5"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第5章：列表字典</h3><div class="editor-container"><textarea id="ed-py5">lst = [80,90,85] print(sum(lst))</textarea><div class="editor-footer"><button onclick="run('ed-py5','out-py5')">运行</button><button onclick="cls('out-py5')">清空</button></div><div id="out-py5"></div></div></div>
+        <div class="chapter-detail" id="py6"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第6章：函数</h3><div class="editor-container"><textarea id="ed-py6">def add(a,b): return a+b print(add(3,5))</textarea><div class="editor-footer"><button onclick="run('ed-py6','out-py6')">运行</button><button onclick="cls('out-py6')">清空</button></div><div id="out-py6"></div></div></div>
+        <div class="chapter-detail" id="py7"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第7章：文件</h3><div class="editor-container"><textarea id="ed-py7">with open("test.txt","w") as f: f.write("hello")</textarea><div class="editor-footer"><button onclick="run('ed-py7','out-py7')">运行</button><button onclick="cls('out-py7')">清空</button></div><div id="out-py7"></div></div></div>
+        <div class="chapter-detail" id="py8"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第8章：异常</h3><div class="editor-container"><textarea id="ed-py8">try: 1/0 except: print("错误")</textarea><div class="editor-footer"><button onclick="run('ed-py8','out-py8')">运行</button><button onclick="cls('out-py8')">清空</button></div><div id="out-py8"></div></div></div>
+        <div class="chapter-detail" id="py9"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第9章：模块</h3><div class="editor-container"><textarea id="ed-py9">import math print(math.pi)</textarea><div class="editor-footer"><button onclick="run('ed-py9','out-py9')">运行</button><button onclick="cls('out-py9')">清空</button></div><div id="out-py9"></div></div></div>
+        <div class="chapter-detail" id="py10"><button class="back-btn" onclick="back('python')">← 返回</button><h3>第10章：实战</h3><div class="editor-container"><textarea id="ed-py10">scores = [80,90,85] print("平均", sum(scores)/len(scores))</textarea><div class="editor-footer"><button onclick="run('ed-py10','out-py10')">运行</button><button onclick="cls('out-py10')">清空</button></div><div id="out-py10"></div></div></div>
+    </div>
 
-        // 在线代码运行（使用Pyodide，在浏览器中运行Python）
-        let pyodideReady = false;
-        let pyodide;
+    <!-- ====================== 数据分析技术 10章 ====================== -->
+    <div class="content-section" id="analysis">
+        <button class="back-btn" onclick="goBack()">← 首页</button>
+        <h2 class="section-title">数据分析技术 - 10章</h2>
+        <div class="chapter-list">
+            <div class="chapter-item" data-chapter="an1">第1章：数据加载</div>
+            <div class="chapter-item" data-chapter="an2">第2章：数据查看</div>
+            <div class="chapter-item" data-chapter="an3">第3章：缺失值处理</div>
+            <div class="chapter-item" data-chapter="an4">第4章：统计计算</div>
+            <div class="chapter-item" data-chapter="an5">第5章：数据筛选</div>
+            <div class="chapter-item" data-chapter="an6">第6章：分组统计</div>
+            <div class="chapter-item" data-chapter="an7">第7章：数据可视化</div>
+            <div class="chapter-item" data-chapter="an8">第8章：Excel导出</div>
+            <div class="chapter-item" data-chapter="an9">第9章：报表制作</div>
+            <div class="chapter-item" data-chapter="an10">第10章：综合分析</div>
+        </div>
+        <div class="chapter-detail" id="an1"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第1章：数据加载</h3><div class="editor-container"><textarea id="ed-an1">import pandas as pd\ndf = pd.DataFrame({'a':[1,2,3]})\nprint(df)</textarea><div class="editor-footer"><button onclick="run('ed-an1','out-an1')">运行</button><button onclick="cls('out-an1')">清空</button></div><div id="out-an1"></div></div></div>
+        <div class="chapter-detail" id="an2"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第2章：数据查看</h3><div class="editor-container"><textarea id="ed-an2">print(df.head())</textarea><div class="editor-footer"><button onclick="run('ed-an2','out-an2')">运行</button><button onclick="cls('out-an2')">清空</button></div><div id="out-an2"></div></div></div>
+        <div class="chapter-detail" id="an3"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第3章：缺失值</h3><div class="editor-container"><textarea id="ed-an3">print(df.isnull().sum())</textarea><div class="editor-footer"><button onclick="run('ed-an3','out-an3')">运行</button><button onclick="cls('out-an3')">清空</button></div><div id="out-an3"></div></div></div>
+        <div class="chapter-detail" id="an4"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第4章：统计</h3><div class="editor-container"><textarea id="ed-an4">print(df.describe())</textarea><div class="editor-footer"><button onclick="run('ed-an4','out-an4')">运行</button><button onclick="cls('out-an4')">清空</button></div><div id="out-an4"></div></div></div>
+        <div class="chapter-detail" id="an5"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第5章：筛选</h3><div class="editor-container"><textarea id="ed-an5">print(df[df['a']>1])</textarea><div class="editor-footer"><button onclick="run('ed-an5','out-an5')">运行</button><button onclick="cls('out-an5')">清空</button></div><div id="out-an5"></div></div></div>
+        <div class="chapter-detail" id="an6"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第6章：分组</h3><div class="editor-container"><textarea id="ed-an6">print(df.groupby('a').sum())</textarea><div class="editor-footer"><button onclick="run('ed-an6','out-an6')">运行</button><button onclick="cls('out-an6')">清空</button></div><div id="out-an6"></div></div></div>
+        <div class="chapter-detail" id="an7"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第7章：绘图</h3><div class="editor-container"><textarea id="ed-an7">import matplotlib.pyplot as plt\nplt.plot([1,2,3])</textarea><div class="editor-footer"><button onclick="run('ed-an7','out-an7')">运行</button><button onclick="cls('out-an7')">清空</button></div><div id="out-an7"></div></div></div>
+        <div class="chapter-detail" id="an8"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第8章：导出</h3><div class="editor-container"><textarea id="ed-an8">df.to_excel('out.xlsx')</textarea><div class="editor-footer"><button onclick="run('ed-an8','out-an8')">运行</button><button onclick="cls('out-an8')">清空</button></div><div id="out-an8"></div></div></div>
+        <div class="chapter-detail" id="an9"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第9章：报表</h3><div class="editor-container"><textarea id="ed-an9">print("完成数据分析报表")</textarea><div class="editor-footer"><button onclick="run('ed-an9','out-an9')">运行</button><button onclick="cls('out-an9')">清空</button></div><div id="out-an9"></div></div></div>
+        <div class="chapter-detail" id="an10"><button class="back-btn" onclick="back('analysis')">← 返回</button><h3>第10章：实战</h3><div class="editor-container"><textarea id="ed-an10">print("销售数据分析完成")</textarea><div class="editor-footer"><button onclick="run('ed-an10','out-an10')">运行</button><button onclick="cls('out-an10')">清空</button></div><div id="out-an10"></div></div></div>
+    </div>
 
-        async function initPyodide() {
-            if (pyodideReady) return;
-            // 动态加载Pyodide
-            const script = document.createElement('script');
+    <!-- ====================== 数据采集 10章 ====================== -->
+    <div class="content-section" id="collect">
+        <button class="back-btn" onclick="goBack()">← 首页</button>
+        <h2 class="section-title">数据采集与处理 - 10章</h2>
+        <div class="chapter-list">
+            <div class="chapter-item" data-chapter="co1">第1章：网络请求</div>
+            <div class="chapter-item" data-chapter="co2">第2章：HTML解析</div>
+            <div class="chapter-item" data-chapter="co3">第3章：API获取</div>
+            <div class="chapter-item" data-chapter="co4">第4章：数据提取</div>
+            <div class="chapter-item" data-chapter="co5">第5章：去重</div>
+            <div class="chapter-item" data-chapter="co6">第6章：清洗</div>
+            <div class="chapter-item" data-chapter="co7">第7章：格式转换</div>
+            <div class="chapter-item" data-chapter="co8">第8章：存储</div>
+            <div class="chapter-item" data-chapter="co9">第9章：批量采集</div>
+            <div class="chapter-item" data-chapter="co10">第10章：采集实战</div>
+        </div>
+        <div class="chapter-detail" id="co1"><button class="back-btn" onclick="back('collect')">← 返回</button><div class="editor-container"><textarea id="ed-co1">import requests\nprint(requests.get('https://www.baidu.com').status_code)</textarea><div class="editor-footer"><button onclick="run('ed-co1','out-co1')">运行</button><button onclick="cls('out-co1')">清空</button></div><div id="out-co1"></div></div></div>
+        <div class="chapter-detail" id="co2"><div class="editor-container"><textarea id="ed-co2">from bs4 import BeautifulSoup\nsoup = BeautifulSoup('<h1>标题</h1>')\nprint(soup.text)</textarea><div class="editor-footer"><button onclick="run('ed-co2','out-co2')">运行</button><button onclick="cls('out-co2')">清空</button></div><div id="out-co2"></div></div></div>
+        <div class="chapter-detail" id="co3"><div class="editor-container"><textarea id="ed-co3">print("API采集")</textarea><div class="editor-footer"><button onclick="run('ed-co3','out-co3')">运行</button><button onclick="cls('out-co3')">清空</button></div><div id="out-co3"></div></div></div>
+        <div class="chapter-detail" id="co4"><div class="editor-container"><textarea id="ed-co4">print("数据提取")</textarea><div class="editor-footer"><button onclick="run('ed-co4','out-co4')">运行</button><button onclick="cls('out-co4')">清空</button></div><div id="out-co4"></div></div></div>
+        <div class="chapter-detail" id="co5"><div class="editor-container"><textarea id="ed-co5">print("去重完成")</textarea><div class="editor-footer"><button onclick="run('ed-co5','out-co5')">运行</button><button onclick="cls('out-co5')">清空</button></div><div id="out-co5"></div></div></div>
+        <div class="chapter-detail" id="co6"><div class="editor-container"><textarea id="ed-co6">print("清洗完成")</textarea><div class="editor-footer"><button onclick="run('ed-co6','out-co6')">运行</button><button onclick="cls('out-co6')">清空</button></div><div id="out-co6"></div></div></div>
+        <div class="chapter-detail" id="co7"><div class="editor-container"><textarea id="ed-co7">print("格式转换")</textarea><div class="editor-footer"><button onclick="run('ed-co7','out-co7')">运行</button><button onclick="cls('out-co7')">清空</button></div><div id="out-co7"></div></div></div>
+        <div class="chapter-detail" id="co8"><div class="editor-container"><textarea id="ed-co8">print("存储成功")</textarea><div class="editor-footer"><button onclick="run('ed-co8','out-co8')">运行</button><button onclick="cls('out-co8')">清空</button></div><div id="out-co8"></div></div></div>
+        <div class="chapter-detail" id="co9"><div class="editor-container"><textarea id="ed-co9">print("批量采集")</textarea><div class="editor-footer"><button onclick="run('ed-co9','out-co9')">运行</button><button onclick="cls('out-co9')">清空</button></div><div id="out-co9"></div></div></div>
+        <div class="chapter-detail" id="co10"><div class="editor-container"><textarea id="ed-co10">print("采集项目完成")</textarea><div class="editor-footer"><button onclick="run('ed-co10','out-co10')">运行</button><button onclick="cls('out-co10')">清空</button></div><div id="out-co10"></div></div></div>
+    </div>
+
+    <!-- ====================== 供应链 10章 ====================== -->
+    <div class="content-section" id="supply">
+        <button class="back-btn" onclick="goBack()">← 首页</button>
+        <h2 class="section-title">供应链数据分析 - 10章</h2>
+        <div class="chapter-list">
+            <div class="chapter-item" data-chapter="su1">第1章：库存分析</div>
+            <div class="chapter-item" data-chapter="su2">第2章：销量预测</div>
+            <div class="chapter-item" data-chapter="su3">第3章：周转率</div>
+            <div class="chapter-item" data-chapter="su4">第4章：采购分析</div>
+            <div class="chapter-item" data-chapter="su5">第5章：物流分析</div>
+            <div class="chapter-item" data-chapter="su6">第6章：成本分析</div>
+            <div class="chapter-item" data-chapter="su7">第7章：缺货分析</div>
+            <div class="chapter-item" data-chapter="su8">第8章：补货策略</div>
+            <div class="chapter-item" data-chapter="su9">第9章：效率优化</div>
+            <div class="chapter-item" data-chapter="su10">第10章：供应链实战</div>
+        </div>
+        <div class="chapter-detail" id="su1"><div class="editor-container"><textarea id="ed-su1">inv = [100,200,150]\nprint(sum(inv))</textarea><div class="editor-footer"><button onclick="run('ed-su1','out-su1')">运行</button><button onclick="cls('out-su1')">清空</button></div><div id="out-su1"></div></div></div>
+        <div class="chapter-detail" id="su2"><div class="editor-container"><textarea id="ed-su2">print("预测销量")</textarea><div class="editor-footer"><button onclick="run('ed-su2','out-su2')">运行</button><button onclick="cls('out-su2')">清空</button></div><div id="out-su2"></div></div></div>
+        <div class="chapter-detail" id="su3"><div class="editor-container"><textarea id="ed-su3">print("库存周转率")</textarea><div class="editor-footer"><button onclick="run('ed-su3','out-su3')">运行</button><button onclick="cls('out-su3')">清空</button></div><div id="out-su3"></div></div></div>
+        <div class="chapter-detail" id="su4"><div class="editor-container"><textarea id="ed-su4">print("采购分析")</textarea><div class="editor-footer"><button onclick="run('ed-su4','out-su4')">运行</button><button onclick="cls('out-su4')">清空</button></div><div id="out-su4"></div></div></div>
+        <div class="chapter-detail" id="su5"><div class="editor-container"><textarea id="ed-su5">print("物流分析")</textarea><div class="editor-footer"><button onclick="run('ed-su5','out-su5')">运行</button><button onclick="cls('out-su5')">清空</button></div><div id="out-su5"></div></div></div>
+        <div class="chapter-detail" id="su6"><div class="editor-container"><textarea id="ed-su6">print("成本分析")</textarea><div class="editor-footer"><button onclick="run('ed-su6','out-su6')">运行</button><button onclick="cls('out-su6')">清空</button></div><div id="out-su6"></div></div></div>
+        <div class="chapter-detail" id="su7"><div class="editor-container"><textarea id="ed-su7">print("缺货预警")</textarea><div class="editor-footer"><button onclick="run('ed-su7','out-su7')">运行</button><button onclick="cls('out-su7')">清空</button></div><div id="out-su7"></div></div></div>
+        <div class="chapter-detail" id="su8"><div class="editor-container"><textarea id="ed-su8">print("智能补货")</textarea><div class="editor-footer"><button onclick="run('ed-su8','out-su8')">运行</button><button onclick="cls('out-su8')">清空</button></div><div id="out-su8"></div></div></div>
+        <div class="chapter-detail" id="su9"><div class="editor-container"><textarea id="ed-su9">print("效率优化")</textarea><div class="editor-footer"><button onclick="run('ed-su9','out-su9')">运行</button><button onclick="cls('out-su9')">清空</button></div><div id="out-su9"></div></div></div>
+        <div class="chapter-detail" id="su10"><div class="editor-container"><textarea id="ed-su10">print("供应链项目完成")</textarea><div class="editor-footer"><button onclick="run('ed-su10','out-su10')">运行</button><button onclick="cls('out-su10')">清空</button></div><div id="out-su10"></div></div></div>
+    </div>
+
+    <!-- ====================== 数据库 10章 ====================== -->
+    <div class="content-section" id="db">
+        <button class="back-btn" onclick="goBack()">← 首页</button>
+        <h2 class="section-title">数据库原理与应用 - 10章</h2>
+        <div class="chapter-list">
+            <div class="chapter-item" data-chapter="db1">第1章：SQL基础</div>
+            <div class="chapter-item" data-chapter="db2">第2章：创建表</div>
+            <div class="chapter-item" data-chapter="db3">第3章：插入数据</div>
+            <div class="chapter-item" data-chapter="db4">第4章：查询</div>
+            <div class="chapter-item" data-chapter="db5">第5章：条件查询</div>
+            <div class="chapter-item" data-chapter="db6">第6章：分组</div>
+            <div class="chapter-item" data-chapter="db7">第7章：连接</div>
+            <div class="chapter-item" data-chapter="db8">第8章：索引</div>
+            <div class="chapter-item" data-chapter="db9">第9章：事务</div>
+            <div class="chapter-item" data-chapter="db10">第10章：SQL实战</div>
+        </div>
+        <div class="chapter-detail" id="db1"><div class="editor-container"><textarea id="ed-db1">-- SELECT * FROM 学生</textarea><div class="editor-footer"><button onclick="run('ed-db1','out-db1')">运行</button><button onclick="cls('out-db1')">清空</button></div><div id="out-db1"></div></div></div>
+        <div class="chapter-detail" id="db2"><div class="editor-container"><textarea id="ed-db2">-- CREATE TABLE 学生(id int)</textarea><div class="editor-footer"><button onclick="run('ed-db2','out-db2')">运行</button><button onclick="cls('out-db2')">清空</button></div><div id="out-db2"></div></div></div>
+        <div class="chapter-detail" id="db3"><div class="editor-container"><textarea id="ed-db3">-- INSERT INTO 学生 VALUES(1)</textarea><div class="editor-footer"><button onclick="run('ed-db3','out-db3')">运行</button><button onclick="cls('out-db3')">清空</button></div><div id="out-db3"></div></div></div>
+        <div class="chapter-detail" id="db4"><div class="editor-container"><textarea id="ed-db4">-- SELECT * FROM 学生</textarea><div class="editor-footer"><button onclick="run('ed-db4','out-db4')">运行</button><button onclick="cls('out-db4')">清空</button></div><div id="out-db4"></div></div></div>
+        <div class="chapter-detail" id="db5"><div class="editor-container"><textarea id="ed-db5">-- SELECT * FROM 学生 WHERE 成绩>60</textarea><div class="editor-footer"><button onclick="run('ed-db5','out-db5')">运行</button><button onclick="cls('out-db5')">清空</button></div><div id="out-db5"></div></div></div>
+        <div class="chapter-detail" id="db6"><div class="editor-container"><textarea id="ed-db6">-- SELECT 班级,AVG(成绩) FROM 学生 GROUP BY 班级</textarea><div class="editor-footer"><button onclick="run('ed-db6','out-db6')">运行</button><button onclick="cls('out-db6')">清空</button></div><div id="out-db6"></div></div></div>
+        <div class="chapter-detail" id="db7"><div class="editor-container"><textarea id="ed-db7">-- JOIN 查询</textarea><div class="editor-footer"><button onclick="run('ed-db7','out-db7')">运行</button><button onclick="cls('out-db7')">清空</button></div><div id="out-db7"></div></div></div>
+        <div class="chapter-detail" id="db8"><div class="editor-container"><textarea id="ed-db8">-- 索引优化</textarea><div class="editor-footer"><button onclick="run('ed-db8','out-db8')">运行</button><button onclick="cls('out-db8')">清空</button></div><div id="out-db8"></div></div></div>
+        <div class="chapter-detail" id="db9"><div class="editor-container"><textarea id="ed-db9">-- 事务提交</textarea><div class="editor-footer"><button onclick="run('ed-db9','out-db9')">运行</button><button onclick="cls('out-db9')">清空</button></div><div id="out-db9"></div></div></div>
+        <div class="chapter-detail" id="db10"><div class="editor-container"><textarea id="ed-db10">-- 综合SQL项目</textarea><div class="editor-footer"><button onclick="run('ed-db10','out-db10')">运行</button><button onclick="cls('out-db10')">清空</button></div><div id="out-db10"></div></div></div>
+    </div>
+
+</div>
+
+<script>
+    let pyodide = null;
+    async function loadPyodide() {
+        if (!pyodide) {
+            let script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js';
             document.head.appendChild(script);
-            await new Promise(resolve => script.onload = resolve);
+            await new Promise(r => script.onload = r);
             pyodide = await loadPyodide();
-            pyodideReady = true;
-            console.log("Pyodide 已加载，可以运行Python代码了！");
         }
+    }
 
-        async function runCode(editorId = 'code-editor') {
-            await initPyodide();
-            const editor = document.getElementById(editorId);
-            const outputId = editorId.replace('code-editor', 'output-area');
-            const output = document.getElementById(outputId);
-            try {
-                // 重定向print输出
-                pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = StringIO()
-sys.stderr = StringIO()
-                `);
-                // 运行用户代码
-                pyodide.runPython(editor.value);
-                // 获取输出
-                const stdout = pyodide.runPython("sys.stdout.getvalue()");
-                const stderr = pyodide.runPython("sys.stderr.getvalue()");
-                output.textContent = stdout || stderr || "代码运行完成，无输出";
-            } catch (e) {
-                output.textContent = "错误: " + e.message;
-            }
+    async function run(editorId, outId) {
+        await loadPyodide();
+        let code = document.getElementById(editorId).value;
+        let out = document.getElementById(outId);
+        try {
+            pyodide.runPython(`
+                import sys
+                from io import StringIO
+                sys.stdout = StringIO()
+            `);
+            await pyodide.runPythonAsync(code);
+            let res = pyodide.runPython("sys.stdout.getvalue()");
+            out.innerText = res;
+        } catch(e) {
+            out.innerText = "错误：" + e.toString();
         }
+    }
 
-        function clearOutput(outputId = 'output-area') {
-            const output = document.getElementById(outputId);
-            output.textContent = "// 运行结果会显示在这里";
+    function cls(outId) {
+        document.getElementById(outId).innerText = "";
+    }
+
+    document.querySelectorAll('.course-card').forEach(card => {
+        card.onclick = () => {
+            document.getElementById(card.dataset.course).classList.add('active');
+            document.getElementById('courseGrid').style.display = 'none';
         }
-    </script>
+    });
+
+    document.querySelectorAll('.chapter-item').forEach(item => {
+        item.onclick = () => {
+            document.querySelectorAll('.chapter-detail').forEach(d => d.classList.remove('active'));
+            document.getElementById(item.dataset.chapter).classList.add('active');
+            item.parentElement.style.display = 'none';
+        }
+    });
+
+    function goBack() {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.chapter-detail').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.chapter-list').forEach(l => l.style.display = 'grid');
+        document.getElementById('courseGrid').style.display = 'grid';
+    }
+
+    function back(courseId) {
+        document.querySelectorAll('.chapter-detail').forEach(d => d.classList.remove('active'));
+        document.querySelector(`#${courseId} .chapter-list`).style.display = 'grid';
+    }
+</script>
 </body>
 </html>
