@@ -153,11 +153,28 @@
             background: #f8fafc;
             border-radius: 10px;
             border-left: 3px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-item:hover {
+            background: #eff6ff;
+            transform: translateX(4px);
         }
 
         .chapter-item h4 {
             font-size: 1.05rem;
             margin-bottom: 0.3rem;
+        }
+
+        /* 章节详情页 */
+        .chapter-detail {
+            display: none;
+        }
+
+        .chapter-detail.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
         }
 
         /* 代码块 */
@@ -261,89 +278,364 @@
         <div class="content-section" id="python">
             <button class="back-btn" onclick="goBack()">← 返回首页</button>
             <h2 class="section-title">Python基础 - 10章完整课程</h2>
-            <div class="chapter-list">
-                <div class="chapter-item"><h4>第1章：Python环境搭建与基础语法</h4></div>
-                <div class="chapter-item"><h4>第2章：变量、数据类型与运算符</h4></div>
-                <div class="chapter-item"><h4>第3章：流程控制（if/for/while）</h4></div>
-                <div class="chapter-item"><h4>第4章：列表、元组、字典、集合</h4></div>
-                <div class="chapter-item"><h4>第5章：函数定义与参数使用</h4></div>
-                <div class="chapter-item"><h4>第6章：模块导入与文件操作</h4></div>
-                <div class="chapter-item"><h4>第7章：异常处理机制</h4></div>
-                <div class="chapter-item"><h4>第8章：面向对象基础</h4></div>
-                <div class="chapter-item"><h4>第9章：常用标准库</h4></div>
-                <div class="chapter-item"><h4>第10章：综合项目实战</h4></div>
+            
+            <!-- 章节列表 -->
+            <div class="chapter-list" id="python-chapters">
+                <div class="chapter-item" data-chapter="py-1">
+                    <h4>第1章：Python环境搭建与基础语法</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-2">
+                    <h4>第2章：变量、数据类型与运算符</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-3">
+                    <h4>第3章：流程控制（if/for/while）</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-4">
+                    <h4>第4章：列表、元组、字典、集合</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-5">
+                    <h4>第5章：函数定义与参数使用</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-6">
+                    <h4>第6章：模块导入与文件操作</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-7">
+                    <h4>第7章：异常处理机制</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-8">
+                    <h4>第8章：面向对象基础</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-9">
+                    <h4>第9章：常用标准库</h4>
+                </div>
+                <div class="chapter-item" data-chapter="py-10">
+                    <h4>第10章：综合项目实战</h4>
+                </div>
             </div>
 
-            <h3>🎯 示例代码</h3>
-            <div class="code-block">
-# Python基础示例：数据分析入门
-import pandas as pd
-import numpy as np
+            <!-- 第1章详情 -->
+            <div class="chapter-detail" id="py-1">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第1章：Python环境搭建与基础语法</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 你的第一个Python程序
+print("Hello, 陈依琳的数据分析学习平台!")
 
-# 创建数据
-data = {"姓名": ["陈依琳","同学1","同学2"],
-        "成绩": [95,88,92],
-        "专业": ["商务数据分析"]*3}
-
-df = pd.DataFrame(data)
-print("学生成绩表：")
-print(df)
-print("\n平均分：", df["成绩"].mean())
+# 简单的数学运算
+a = 10
+b = 20
+print("a + b =", a + b)
+print("a * b =", a * b)
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 安装Python并配置开发环境（推荐VS Code）<br>
+                    2. 编写程序输出你的名字和专业信息<br>
+                    3. 计算123和456的加减乘除运算并打印结果
+                </div>
             </div>
 
-            <h3>📝 章节练习题</h3>
-            <div class="exercise">
-                <strong>第3章练习题：</strong><br>
-                1. 编写程序判断输入数字是奇数还是偶数<br>
-                2. 使用for循环输出1-100所有能被7整除的数<br>
-                3. 实现一个简单的成绩等级判断系统（90+A，80+B，以此类推）
+            <!-- 第2章详情 -->
+            <div class="chapter-detail" id="py-2">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第2章：变量、数据类型与运算符</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 变量与数据类型示例
+name = "陈依琳"          # 字符串
+age = 20                # 整数
+height = 1.65           # 浮点数
+is_student = True       # 布尔值
+
+print(f"姓名: {name}, 年龄: {age}, 身高: {height}")
+print("数据类型:", type(name), type(age), type(height))
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 定义变量存储你的姓名、年龄、专业信息并打印<br>
+                    2. 计算圆的面积（π取3.14，半径自定义）<br>
+                    3. 实现温度转换：摄氏度转华氏度（公式：F = C × 9/5 + 32）
+                </div>
+            </div>
+
+            <!-- 第3章详情 -->
+            <div class="chapter-detail" id="py-3">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第3章：流程控制（if/for/while）</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# if条件判断
+score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+else:
+    grade = "C"
+print(f"成绩等级: {grade}")
+
+# for循环
+for i in range(1, 6):
+    print(f"第{i}次循环")
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 编写程序判断输入数字是奇数还是偶数<br>
+                    2. 使用for循环输出1-100所有能被7整除的数<br>
+                    3. 实现一个简单的成绩等级判断系统（90+A，80+B，以此类推）
+                </div>
+            </div>
+
+            <!-- 第4章详情 -->
+            <div class="chapter-detail" id="py-4">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第4章：列表、元组、字典、集合</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 列表操作
+scores = [85, 92, 78, 90, 88]
+scores.append(95)
+print("平均分:", sum(scores)/len(scores))
+
+# 字典操作
+student = {"name": "陈依琳", "major": "商务数据分析", "score": 95}
+print("专业:", student["major"])
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 创建一个包含5个元素的列表，实现增删改查操作<br>
+                    2. 使用字典存储3个同学的成绩信息，并计算平均分<br>
+                    3. 找出两个列表中的共同元素（使用集合）
+                </div>
+            </div>
+
+            <!-- 第5-10章的结构我先给你搭好，你可以按需要补充 -->
+            <div class="chapter-detail" id="py-5">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第5章：函数定义与参数使用</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 定义函数计算平均分
+def calc_average(scores):
+    return sum(scores) / len(scores)
+
+scores = [85, 92, 78, 90]
+avg = calc_average(scores)
+print(f"平均分: {avg:.2f}")
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 编写函数判断一个数是否为质数<br>
+                    2. 编写函数实现列表的最大值、最小值、平均值计算<br>
+                    3. 实现带默认参数的函数，计算不同税率下的税额
+                </div>
+            </div>
+
+            <div class="chapter-detail" id="py-6">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第6章：模块导入与文件操作</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+import math
+import random
+
+# 使用math模块
+print("圆周率:", math.pi)
+print("平方根:", math.sqrt(16))
+
+# 文件写入
+with open("scores.txt", "w") as f:
+    f.write("陈依琳,95\n同学A,88\n同学B,92")
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 读取一个文本文件，统计单词出现次数<br>
+                    2. 使用csv模块读写学生成绩表格<br>
+                    3. 生成10个随机数并写入文件，再读取计算平均值
+                </div>
+            </div>
+
+            <div class="chapter-detail" id="py-7">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第7章：异常处理机制</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+try:
+    num = int(input("请输入一个数字: "))
+    result = 100 / num
+    print(f"100 / {num} = {result}")
+except ValueError:
+    print("请输入有效的数字！")
+except ZeroDivisionError:
+    print("除数不能为零！")
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 编写程序处理文件不存在的异常<br>
+                    2. 实现带异常处理的成绩录入系统<br>
+                    3. 使用try-except-else-finally完成完整异常处理流程
+                </div>
+            </div>
+
+            <div class="chapter-detail" id="py-8">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第8章：面向对象基础</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+class Student:
+    def __init__(self, name, major):
+        self.name = name
+        self.major = major
+    
+    def introduce(self):
+        print(f"我是{self.name}，专业是{self.major}")
+
+student = Student("陈依琳", "商务数据分析")
+student.introduce()
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 创建一个课程类，包含课程名、学分、成绩属性<br>
+                    2. 实现学生类的继承，创建研究生子类<br>
+                    3. 编写一个简单的图书管理系统类
+                </div>
+            </div>
+
+            <div class="chapter-detail" id="py-9">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第9章：常用标准库</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+import datetime
+import json
+
+# 日期处理
+today = datetime.date.today()
+print("今天:", today)
+
+# JSON处理
+data = {"name": "陈依琳", "scores": [95, 88, 92]}
+json_str = json.dumps(data)
+print("JSON字符串:", json_str)
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 使用datetime模块计算两个日期之间的天数<br>
+                    2. 使用json模块读写配置文件<br>
+                    3. 使用os模块遍历目录下的所有文件
+                </div>
+            </div>
+
+            <div class="chapter-detail" id="py-10">
+                <button class="back-btn" onclick="backToChapters('python')">← 返回章节列表</button>
+                <h3>第10章：综合项目实战</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 学生成绩管理系统（简化版）
+students = []
+
+def add_student(name, score):
+    students.append({"name": name, "score": score})
+
+def show_stats():
+    if not students:
+        print("暂无数据")
+        return
+    scores = [s["score"] for s in students]
+    print(f"平均分: {sum(scores)/len(scores):.2f}")
+    print(f"最高分: {max(scores)}, 最低分: {min(scores)}")
+
+add_student("陈依琳", 95)
+add_student("同学A", 88)
+show_stats()
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 完成一个完整的学生成绩管理系统（增删改查+统计）<br>
+                    2. 实现数据的持久化存储（读写文件）<br>
+                    3. 添加简单的用户交互菜单
+                </div>
             </div>
         </div>
 
-        <!-- ==================== 数据分析技术 ==================== -->
+        <!-- ==================== 其他课程的结构（先给你搭好框架） ==================== -->
         <div class="content-section" id="analysis">
             <button class="back-btn" onclick="goBack()">← 返回首页</button>
             <h2 class="section-title">数据分析技术 - 10章完整课程</h2>
-            <div class="chapter-list">
-                <div class="chapter-item"><h4>第1章：数据分析概述与流程</h4></div>
-                <div class="chapter-item"><h4>第2章：数据清洗与预处理</h4></div>
-                <div class="chapter-item"><h4>第3章：描述性统计分析</h4></div>
-                <div class="chapter-item"><h4>第4章：数据可视化基础</h4></div>
-                <div class="chapter-item"><h4>第5章：多维分析与钻取</h4></div>
-                <div class="chapter-item"><h4>第6章：Pandas高级操作</h4></div>
-                <div class="chapter-item"><h4>第7章：Matplotlib绘图实战</h4></div>
-                <div class="chapter-item"><h4>第8章：业务指标体系搭建</h4></div>
-                <div class="chapter-item"><h4>第9章：数据分析报告撰写</h4></div>
-                <div class="chapter-item"><h4>第10章：商业数据分析实战</h4></div>
+            <div class="chapter-list" id="analysis-chapters">
+                <div class="chapter-item" data-chapter="an-1">
+                    <h4>第1章：数据分析概述与流程</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-2">
+                    <h4>第2章：数据清洗与预处理</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-3">
+                    <h4>第3章：描述性统计分析</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-4">
+                    <h4>第4章：数据可视化基础</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-5">
+                    <h4>第5章：多维分析与钻取</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-6">
+                    <h4>第6章：Pandas高级操作</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-7">
+                    <h4>第7章：Matplotlib绘图实战</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-8">
+                    <h4>第8章：业务指标体系搭建</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-9">
+                    <h4>第9章：数据分析报告撰写</h4>
+                </div>
+                <div class="chapter-item" data-chapter="an-10">
+                    <h4>第10章：商业数据分析实战</h4>
+                </div>
             </div>
 
-            <h3>🎯 示例代码</h3>
-            <div class="code-block">
-# 数据分析示例：销售数据统计
+            <!-- 第1章示例 -->
+            <div class="chapter-detail" id="an-1">
+                <button class="back-btn" onclick="backToChapters('analysis')">← 返回章节列表</button>
+                <h3>第1章：数据分析概述与流程</h3>
+                <h4>🎯 示例代码</h4>
+                <div class="code-block">
+# 数据分析流程示例
 import pandas as pd
-import matplotlib.pyplot as plt
 
-# 读取数据（模拟）
-sales = pd.DataFrame({
+# 1. 数据获取
+df = pd.DataFrame({
     "月份": [1,2,3,4,5],
     "销售额": [12000,15000,18000,16500,21000]
 })
 
-# 计算月增长率
-sales["增长率"] = sales["销售额"].pct_change() * 100
-print(sales)
-            </div>
-
-            <h3>📝 章节练习题</h3>
-            <div class="exercise">
-                <strong>第4章练习题：</strong><br>
-                1. 对一份销售数据完成缺失值、异常值清洗<br>
-                2. 使用柱状图展示各产品销量对比<br>
-                3. 计算月度销售额同比、环比增长率
+# 2. 数据查看
+print(df.head())
+print(df.describe())
+                </div>
+                <h4>📝 练习题</h4>
+                <div class="exercise">
+                    <strong>练习题：</strong><br>
+                    1. 整理数据分析的完整流程步骤<br>
+                    2. 用pandas读取一个csv文件并查看基本信息<br>
+                    3. 描述你理解的数据分析在商务中的应用场景
+                </div>
             </div>
         </div>
 
-        <!-- ==================== 数据采集与处理 ==================== -->
+        <!-- 其他课程（数据采集、供应链、数据库）的结构我都可以帮你补全 -->
         <div class="content-section" id="collect">
             <button class="back-btn" onclick="goBack()">← 返回首页</button>
             <h2 class="section-title">数据采集与处理 - 10章完整课程</h2>
@@ -359,33 +651,8 @@ print(sales)
                 <div class="chapter-item"><h4>第9章：数据存储方案</h4></div>
                 <div class="chapter-item"><h4>第10章：采集项目综合实战</h4></div>
             </div>
-
-            <h3>🎯 示例代码</h3>
-            <div class="code-block">
-# 数据采集示例
-import requests
-from bs4 import BeautifulSoup
-
-# 请求网页
-url = "https://www.example.com"
-response = requests.get(url)
-soup = BeautifulSoup(response.text, "html.parser")
-
-# 提取标题
-title = soup.find("title").text
-print("网页标题：", title)
-            </div>
-
-            <h3>📝 章节练习题</h3>
-            <div class="exercise">
-                <strong>第6章练习题：</strong><br>
-                1. 爬取一个公开页面的表格数据并保存<br>
-                2. 对采集的数据进行去重、缺失值填充<br>
-                3. 将清洗后数据导出为Excel文件
-            </div>
         </div>
 
-        <!-- ==================== 供应链数据分析 ==================== -->
         <div class="content-section" id="supply">
             <button class="back-btn" onclick="goBack()">← 返回首页</button>
             <h2 class="section-title">供应链数据分析 - 10章完整课程</h2>
@@ -401,34 +668,8 @@ print("网页标题：", title)
                 <div class="chapter-item"><h4>第9章：供应链优化模型</h4></div>
                 <div class="chapter-item"><h4>第10章：行业案例实战</h4></div>
             </div>
-
-            <h3>🎯 示例代码</h3>
-            <div class="code-block">
-# 供应链库存分析
-import pandas as pd
-
-# 库存数据
-inventory = pd.DataFrame({
-    "产品": ["A","B","C","D"],
-    "库存": [150,80,200,120],
-    "月销量": [60,75,90,40]
-})
-
-# 计算可售天数
-inventory["可售天数"] = inventory["库存"] / inventory["月销量"] * 30
-print(inventory)
-            </div>
-
-            <h3>📝 章节练习题</h3>
-            <div class="exercise">
-                <strong>第4章练习题：</strong><br>
-                1. 分析历史销量数据并做月度需求预测<br>
-                2. 计算库存周转率并判断库存健康度<br>
-                3. 输出一份供应链数据简报
-            </div>
         </div>
 
-        <!-- ==================== 数据库原理与应用 ==================== -->
         <div class="content-section" id="db">
             <button class="back-btn" onclick="goBack()">← 返回首页</button>
             <h2 class="section-title">数据库原理与应用 - 10章完整课程</h2>
@@ -443,27 +684,6 @@ print(inventory)
                 <div class="chapter-item"><h4>第8章：事务与锁</h4></div>
                 <div class="chapter-item"><h4>第9章：数据库设计</h4></div>
                 <div class="chapter-item"><h4>第10章：数据库综合实战</h4></div>
-            </div>
-
-            <h3>🎯 示例代码</h3>
-            <div class="code-block">
--- SQL查询示例：学生成绩查询
-SELECT
-    学生姓名,
-    课程名称,
-    成绩,
-    CASE WHEN 成绩 >= 60 THEN '及格' ELSE '不及格' END AS 状态
-FROM 成绩表
-WHERE 专业 = '商务数据分析与应用'
-ORDER BY 成绩 DESC;
-            </div>
-
-            <h3>📝 章节练习题</h3>
-            <div class="exercise">
-                <strong>第5章练习题：</strong><br>
-                1. 创建学生信息表并插入5条数据<br>
-                2. 使用多条件查询筛选出80分以上学生<br>
-                3. 使用分组统计各班级平均分
             </div>
         </div>
     </div>
@@ -482,9 +702,40 @@ ORDER BY 成绩 DESC;
             });
         });
 
+        // 章节点击事件
+        document.querySelectorAll('.chapter-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const chapterId = item.dataset.chapter;
+                if (chapterId) {
+                    // 隐藏当前课程的章节列表
+                    item.parentElement.style.display = 'none';
+                    // 显示章节详情
+                    document.getElementById(chapterId).classList.add('active');
+                }
+            });
+        });
+
+        // 返回课程章节列表
+        function backToChapters(courseId) {
+            // 隐藏所有章节详情
+            document.querySelectorAll('.chapter-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            // 显示章节列表
+            document.querySelectorAll(`#${courseId} .chapter-list`).forEach(list => {
+                list.style.display = 'grid';
+            });
+        }
+
         // 返回首页
         function goBack() {
             sections.forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.chapter-detail').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            document.querySelectorAll('.chapter-list').forEach(list => {
+                list.style.display = 'grid';
+            });
             grid.style.display = 'grid';
         }
     </script>
